@@ -1,5 +1,7 @@
 package com.iago.carolinaVca.domain;
 
+import com.iago.carolinaVca.domain.exceptions.UserException;
+
 public class User {
     private Integer cdUser;
     private String nmUser;
@@ -31,13 +33,13 @@ public class User {
     
     private void validators() {    
         if (nmUser == null) {
-            throw new IllegalArgumentException("Nome do usuário é obrigatório");
+            throw new UserException("Nome do usuário é obrigatório");
         }
         if (password == null) {
-            throw new IllegalArgumentException("A senha é obrigatória");
+            throw new UserException("A senha é obrigatória");
         }
         if (role == null) {
-            throw new IllegalArgumentException("O cargo é obrigatório");
+            throw new UserException("O cargo é obrigatório");
         }
     }
 }
