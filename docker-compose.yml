@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:latest
+    container_name: postgres_carolina
+    environment:
+      POSTGRES_USER: user_carolina
+      POSTGRES_PASSWORD: password_carolina
+      POSTGRES_DB: carolina_vca_db
+    ports:
+      - "45432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
