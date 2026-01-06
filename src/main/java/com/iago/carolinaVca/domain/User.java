@@ -1,17 +1,20 @@
 package com.iago.carolinaVca.domain;
 
+import com.iago.carolinaVca.domain.enums.UserRoleEnum;
 import com.iago.carolinaVca.domain.exceptions.UserException;
+import com.iago.carolinaVca.domain.vos.Name;
 
 public class User {
     private Integer cdUser;
-    private String nmUser;
+    private Name nmUser;
     private String password;
-    private Integer role;
+    private UserRoleEnum role;
 
-    public User(Integer cdUser, String nmUser, String password) {
+    public User(Integer cdUser, Name nmUser, String password, UserRoleEnum role) {
         this.cdUser = cdUser;
         this.nmUser = nmUser;
         this.password = password;
+        this.role = role;
         this.validators();
     }
 
@@ -19,7 +22,7 @@ public class User {
         return cdUser;
     }
 
-    public String getNmUser() {
+    public Name getNmUser() {
         return nmUser;
     }
 
@@ -27,7 +30,7 @@ public class User {
         return password;
     }
 
-    public Integer getRole() {
+    public UserRoleEnum getRole() {
         return role;
     }
     
