@@ -16,7 +16,7 @@ public class UserPresentationMapper {
                 null,
                 new Name(request.getNmUser()),
                 request.getPassword(),
-                UserRoleEnum.valueOf(request.getRole())
+                UserRoleEnum.fromCodigo(request.getRole())
         );
     }
 
