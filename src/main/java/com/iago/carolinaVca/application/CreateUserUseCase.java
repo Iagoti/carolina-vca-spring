@@ -5,7 +5,9 @@ import com.iago.carolinaVca.domain.repositories.IUserRepository;
 import com.iago.carolinaVca.presentation.mapper.UserPresentationMapper;
 import com.iago.carolinaVca.presentation.request.CreateUserRequest;
 import com.iago.carolinaVca.presentation.response.UserResponse;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CreateUserUseCase {
 
     private final IUserRepository usuarioRepository;
