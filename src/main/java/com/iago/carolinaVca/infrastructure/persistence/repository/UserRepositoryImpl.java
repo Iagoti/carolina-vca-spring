@@ -1,0 +1,41 @@
+package com.iago.carolinaVca.infrastructure.persistence.repository;
+
+import java.util.Optional;
+
+import org.springframework.stereotype.Repository;
+
+import com.iago.carolinaVca.domain.User;
+import com.iago.carolinaVca.domain.repositories.IUserRepository;
+import com.iago.carolinaVca.infrastructure.persistence.entity.UserEntity;
+import com.iago.carolinaVca.infrastructure.persistence.mapper.UserPersistenceMapper;
+
+@Repository
+public class UserRepositoryImpl implements IUserRepository {
+
+    private final UserJpaRepository jpaRepository;
+    private final UserPersistenceMapper mapper;
+
+    public UserRepositoryImpl(UserJpaRepository jpaRepository, UserPersistenceMapper mapper) {
+        this.jpaRepository = jpaRepository;
+        this.mapper = mapper;
+    }
+
+    @Override
+    public Optional<User> findByCdUser(Integer cdUser) {
+        return jpaRepository.findById(cdUser)
+                .map(mapper::toDomain);
+    }
+
+    @Override
+    public User save(User user) {
+        UserEntity entity = mapper.toEntity(user);
+        UserEntity saved = jpaRepository.save(entity);
+        return mapper.toDomain(saved);
+    }
+
+    @Override
+    public void delete(User user) {
+        jpaRepository.deleteById(user.getCdUser());
+    }
+}
+
