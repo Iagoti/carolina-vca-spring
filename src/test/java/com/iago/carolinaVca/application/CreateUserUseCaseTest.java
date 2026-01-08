@@ -43,7 +43,7 @@ class CreateUserUseCaseTest {
         validRequest = new CreateUserRequest();
         validRequest.setNmUser("João Silva");
         validRequest.setPassword("senha123");
-        validRequest.setRole(UserRoleEnum.ADMIN.name());
+        validRequest.setRole(UserRoleEnum.ADMIN.getCodigo());
     }
 
     @Test
