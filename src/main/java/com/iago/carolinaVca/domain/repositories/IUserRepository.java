@@ -7,4 +7,5 @@ public interface IUserRepository {
     Optional<User> findByCdUser(Integer cdUser);
     User save(User user);
     void delete(User user);
+    Optional<User> findByEmail(String email);
 }

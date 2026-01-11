@@ -37,5 +37,11 @@ public class UserRepositoryImpl implements IUserRepository {
     public void delete(User user) {
         jpaRepository.deleteById(user.getCdUser());
     }
+
+    @Override
+    public Optional<User> findByEmail(String email) {
+        return jpaRepository.findByEmail(email)
+                .map(mapper::toDomain);
+    }
 }
 

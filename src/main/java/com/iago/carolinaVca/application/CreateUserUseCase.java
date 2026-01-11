@@ -1,11 +1,14 @@
 package com.iago.carolinaVca.application;
 
+import com.iago.carolinaVca.domain.exceptions.UserException;
 import com.iago.carolinaVca.domain.model.User;
 import com.iago.carolinaVca.domain.repositories.IUserRepository;
 import com.iago.carolinaVca.presentation.mapper.UserPresentationMapper;
 import com.iago.carolinaVca.presentation.request.CreateUserRequest;
 import com.iago.carolinaVca.presentation.response.UserResponse;
 import org.springframework.stereotype.Component;
+
+import java.util.Optional;
 
 @Component
 public class CreateUserUseCase {
@@ -23,6 +26,9 @@ public class CreateUserUseCase {
 
     public UserResponse execute(CreateUserRequest request) {
         User userRequest = userPresentationMapper.toDomain(request);
+        usuarioRepository.findByEmail(userRequest.getEmail()).ifPresent(user -> {
+            throw new UserException("E-mail já cadastrado no sistema.");
+        });
         User newUser = usuarioRepository.save(userRequest);
         UserResponse userResponse = userPresentationMapper.toResponse(newUser);
         return userResponse;
