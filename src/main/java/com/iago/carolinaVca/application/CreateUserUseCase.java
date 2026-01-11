@@ -1,6 +1,6 @@
 package com.iago.carolinaVca.application;
 
-import com.iago.carolinaVca.domain.User;
+import com.iago.carolinaVca.domain.model.User;
 import com.iago.carolinaVca.domain.repositories.IUserRepository;
 import com.iago.carolinaVca.presentation.mapper.UserPresentationMapper;
 import com.iago.carolinaVca.presentation.request.CreateUserRequest;

@@ -1,4 +1,4 @@
-package com.iago.carolinaVca.domain;
+package com.iago.carolinaVca.domain.model;
 
 import com.iago.carolinaVca.domain.enums.UserRoleEnum;
 import com.iago.carolinaVca.domain.exceptions.UserException;
@@ -8,12 +8,14 @@ public class User {
     private Integer cdUser;
     private Name nmUser;
     private String password;
+    private String email;
     private UserRoleEnum role;
 
-    public User(Integer cdUser, Name nmUser, String password, UserRoleEnum role) {
+    public User(Integer cdUser, Name nmUser, String password, String email, UserRoleEnum role) {
         this.cdUser = cdUser;
         this.nmUser = nmUser;
         this.password = password;
+        this.email = email;
         this.role = role;
         this.validators();
     }
@@ -30,6 +32,10 @@ public class User {
         return password;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     public UserRoleEnum getRole() {
         return role;
     }
@@ -40,6 +46,9 @@ public class User {
         }
         if (password == null) {
             throw new UserException("A senha é obrigatória");
+        }
+        if (email == null) {
+            throw new UserException("O email é obrigatória");
         }
         if (role == null) {
             throw new UserException("O cargo é obrigatório");

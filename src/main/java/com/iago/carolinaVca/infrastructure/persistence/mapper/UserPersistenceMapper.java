@@ -2,7 +2,7 @@ package com.iago.carolinaVca.infrastructure.persistence.mapper;
 
 import org.springframework.stereotype.Component;
 
-import com.iago.carolinaVca.domain.User;
+import com.iago.carolinaVca.domain.model.User;
 import com.iago.carolinaVca.domain.enums.UserRoleEnum;
 import com.iago.carolinaVca.domain.vos.Name;
 import com.iago.carolinaVca.infrastructure.persistence.entity.UserEntity;
@@ -15,6 +15,7 @@ public class UserPersistenceMapper {
         entity.setCdUser(user.getCdUser());
         entity.setNmUser(user.getNmUser().getValue());
         entity.setPassword(user.getPassword());
+        entity.setEmail(user.getEmail());
         entity.setRole(user.getRole().getCodigo());
         return entity;
     }
@@ -24,6 +25,7 @@ public class UserPersistenceMapper {
                 entity.getCdUser(),
                 new Name(entity.getNmUser()),
                 entity.getPassword(),
+                entity.getEmail(),
                 UserRoleEnum.fromCodigo(entity.getRole())
         );
     }

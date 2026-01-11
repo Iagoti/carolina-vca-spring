@@ -3,6 +3,7 @@ package com.iago.carolinaVca.presentation.request;
 public class CreateUserRequest {
     private String nmUser;
     private String password;
+    private String email;
     private Integer role;
 
     public String getNmUser() {
@@ -16,6 +17,9 @@ public class CreateUserRequest {
     }
     public void setPassword(String password) {
         this.password = password;
+    }
+    public String getEmail() {
+        return email;
     }
     public Integer getRole() {
         return role;

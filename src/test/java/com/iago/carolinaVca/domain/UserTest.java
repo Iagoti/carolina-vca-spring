@@ -1,5 +1,6 @@
 package com.iago.carolinaVca.domain;
 
+import com.iago.carolinaVca.domain.model.User;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

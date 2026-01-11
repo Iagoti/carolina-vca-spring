@@ -22,6 +22,9 @@ public class UserEntity {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "email")
+    private String email;
+
     @Column(name = "role")
     private Integer role;
 
@@ -55,5 +58,13 @@ public class UserEntity {
 
     public void setRole(Integer role) {
         this.role = role;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

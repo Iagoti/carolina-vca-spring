@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
-import com.iago.carolinaVca.domain.User;
+import com.iago.carolinaVca.domain.model.User;
 import com.iago.carolinaVca.domain.repositories.IUserRepository;
 import com.iago.carolinaVca.infrastructure.persistence.entity.UserEntity;
 import com.iago.carolinaVca.infrastructure.persistence.mapper.UserPersistenceMapper;

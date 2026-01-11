@@ -1,6 +1,6 @@
 package com.iago.carolinaVca.application;
 
-import com.iago.carolinaVca.domain.User;
+import com.iago.carolinaVca.domain.model.User;
 import com.iago.carolinaVca.domain.enums.UserRoleEnum;
 import com.iago.carolinaVca.domain.repositories.IUserRepository;
 import com.iago.carolinaVca.domain.vos.Name;
@@ -38,7 +38,7 @@ class CreateUserUseCaseTest {
     @BeforeEach
     void setUp() {
         Name name = new Name("João Silva");
-        validUser = new User(1, name, "senha123", UserRoleEnum.ADMIN);
+        validUser = new User(1, name, "senha123", "test@gmail.com", UserRoleEnum.ADMIN);
 
         validRequest = new CreateUserRequest();
         validRequest.setNmUser("João Silva");
@@ -49,8 +49,8 @@ class CreateUserUseCaseTest {
     @Test
     @DisplayName("Deve criar um usuário com sucesso")
     void shouldCreateUserSuccessfully() {
-        User savedUser = new User(1, new Name("João Silva"), "senha123", UserRoleEnum.ADMIN);
-        UserResponse savedResponse = new UserResponse(1, "João Silva", UserRoleEnum.ADMIN.name());
+        User savedUser = new User(1, new Name("João Silva"), "senha123", "test@gmail.com", UserRoleEnum.ADMIN);
+        UserResponse savedResponse = new UserResponse(1, "João Silva", "test@gmail.com", UserRoleEnum.ADMIN.name());
 
         when(userPresentationMapper.toDomain(any(CreateUserRequest.class))).thenReturn(validUser);
         when(usuarioRepository.save(any(User.class))).thenReturn(savedUser);
@@ -68,8 +68,8 @@ class CreateUserUseCaseTest {
     @Test
     @DisplayName("Deve chamar o método save do repositório com o usuário correto")
     void shouldCallRepositorySaveWithCorrectUser() {
-        User savedUser = new User(1, new Name("João Silva"), "senha123", UserRoleEnum.ADMIN);
-        UserResponse savedResponse = new UserResponse(1, "João Silva", UserRoleEnum.ADMIN.name());
+        User savedUser = new User(1, new Name("João Silva"), "senha123", "test@gmail.com", UserRoleEnum.ADMIN);
+        UserResponse savedResponse = new UserResponse(1, "João Silva", "test@gmail.com", UserRoleEnum.ADMIN.name());
 
         when(userPresentationMapper.toDomain(any(CreateUserRequest.class))).thenReturn(validUser);
         when(usuarioRepository.save(any(User.class))).thenReturn(savedUser);
@@ -85,8 +85,8 @@ class CreateUserUseCaseTest {
     @Test
     @DisplayName("Deve retornar o usuário salvo pelo repositório")
     void shouldReturnSavedUserFromRepository() {
-        User savedUser = new User(2, new Name("Maria Santos"), "senha456", UserRoleEnum.EDITOR);
-        UserResponse savedResponse = new UserResponse(2, "Maria Santos", UserRoleEnum.EDITOR.name());
+        User savedUser = new User(2, new Name("Maria Santos"), "senha456", "test@gmail.com", UserRoleEnum.EDITOR);
+        UserResponse savedResponse = new UserResponse(2, "Maria Santos", "test@gmail.com", UserRoleEnum.EDITOR.name());
 
         when(userPresentationMapper.toDomain(any(CreateUserRequest.class))).thenReturn(validUser);
         when(usuarioRepository.save(any(User.class))).thenReturn(savedUser);

@@ -2,7 +2,7 @@ package com.iago.carolinaVca.presentation.mapper;
 
 import org.springframework.stereotype.Component;
 
-import com.iago.carolinaVca.domain.User;
+import com.iago.carolinaVca.domain.model.User;
 import com.iago.carolinaVca.domain.enums.UserRoleEnum;
 import com.iago.carolinaVca.domain.vos.Name;
 import com.iago.carolinaVca.presentation.request.CreateUserRequest;
@@ -16,6 +16,7 @@ public class UserPresentationMapper {
                 null,
                 new Name(request.getNmUser()),
                 request.getPassword(),
+                request.getEmail(),
                 UserRoleEnum.fromCodigo(request.getRole())
         );
     }
@@ -24,6 +25,7 @@ public class UserPresentationMapper {
         return new UserResponse(
                 user.getCdUser(),
                 user.getNmUser().getValue(),
+                user.getEmail(),
                 user.getRole().name()
         );
     }
