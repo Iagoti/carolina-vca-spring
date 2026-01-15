@@ -10,4 +10,5 @@ public interface IUserRepository {
     void delete(User user);
     Optional<User> findByEmail(String email);
     List<User> findAll();
+    Optional<User> findById(Integer cdUser);
 }

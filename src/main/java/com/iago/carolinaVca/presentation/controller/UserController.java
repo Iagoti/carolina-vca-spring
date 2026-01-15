@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import com.iago.carolinaVca.application.CreateUserUseCase;
 import com.iago.carolinaVca.presentation.request.CreateUserRequest;
 import com.iago.carolinaVca.presentation.response.UserResponse;
+import com.iago.carolinaVca.application.FindUserByIdUseCase;
 
 @RestController
 @RequestMapping("/users")
@@ -14,13 +15,16 @@ public class UserController {
 
     private final CreateUserUseCase createUserUseCase;
     private final FindAllUsersUseCase findAllUsersUseCase;
+    private final FindUserByIdUseCase findByIdUserUseCase;
 
     public UserController(
             CreateUserUseCase createUserUseCase,
-            FindAllUsersUseCase findAllUsersUseCase
+            FindAllUsersUseCase findAllUsersUseCase,
+            FindUserByIdUseCase findByIdUserUseCase
     ) {
         this.createUserUseCase = createUserUseCase;
         this.findAllUsersUseCase = findAllUsersUseCase;
+        this.findByIdUserUseCase = findByIdUserUseCase;
     }
 
     @PostMapping
@@ -47,5 +51,16 @@ public class UserController {
                     .body(e.getMessage());
         }
     }
-}
 
+    @GetMapping("/{cdUser}")
+    public ResponseEntity<?> findByIdUser(@PathVariable Integer cdUser) {
+        try {
+            return ResponseEntity.ok(findByIdUserUseCase.execute(cdUser));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity
+                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(e.getMessage());
+        }
+    }
+}

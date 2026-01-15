@@ -52,5 +52,11 @@ public class UserRepositoryImpl implements IUserRepository {
                 .map(mapper::toDomain)
                 .toList();
     }
+
+    @Override
+    public Optional<User> findById(Integer cdUser) {
+        return jpaRepository.findById(cdUser)
+                .map(mapper::toDomain);
+    }
 }
 
