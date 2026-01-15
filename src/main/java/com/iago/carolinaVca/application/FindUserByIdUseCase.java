@@ -1,5 +1,6 @@
 package com.iago.carolinaVca.application;
 
+import com.iago.carolinaVca.domain.model.User;
 import com.iago.carolinaVca.domain.repositories.IUserRepository;
 import com.iago.carolinaVca.presentation.response.UserResponse;
 import org.springframework.stereotype.Component;
@@ -14,7 +15,7 @@ public class FindUserByIdUseCase {
     }
 
     public UserResponse execute(Integer cdUser) throws Exception {
-        var user = userRepository.findById(cdUser)
+        User user = userRepository.findById(cdUser)
                 .orElseThrow(() -> new Exception("Usuário não encontrado."));
 
         return new UserResponse(
