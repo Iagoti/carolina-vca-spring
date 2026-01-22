@@ -1,7 +1,7 @@
-package com.iago.carolinaVca.application;
+package com.iago.carolinaVca.application.user;
 
 import com.iago.carolinaVca.domain.model.User;
-import com.iago.carolinaVca.domain.repositories.IUserRepository;
+import com.iago.carolinaVca.domain.ports.IUserRepository;
 import com.iago.carolinaVca.presentation.response.UserResponse;
 import org.springframework.stereotype.Component;
 

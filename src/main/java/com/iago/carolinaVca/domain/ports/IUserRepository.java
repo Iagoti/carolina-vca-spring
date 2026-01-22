@@ -1,4 +1,4 @@
-package com.iago.carolinaVca.domain.repositories;
+package com.iago.carolinaVca.domain.ports;
 
 import java.util.List;
 import java.util.Optional;

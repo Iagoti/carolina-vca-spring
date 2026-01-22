@@ -1,13 +1,13 @@
 package com.iago.carolinaVca.presentation.controller;
 
-import com.iago.carolinaVca.application.FindAllUsersUseCase;
+import com.iago.carolinaVca.application.user.FindAllUsersUseCase;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.iago.carolinaVca.application.CreateUserUseCase;
+import com.iago.carolinaVca.application.user.CreateUserUseCase;
 import com.iago.carolinaVca.presentation.request.CreateUserRequest;
 import com.iago.carolinaVca.presentation.response.UserResponse;
-import com.iago.carolinaVca.application.FindUserByIdUseCase;
+import com.iago.carolinaVca.application.user.FindUserByIdUseCase;
 
 @RestController
 @RequestMapping("/users")

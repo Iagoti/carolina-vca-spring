@@ -1,8 +1,9 @@
 package com.iago.carolinaVca.application;
 
+import com.iago.carolinaVca.application.user.CreateUserUseCase;
 import com.iago.carolinaVca.domain.model.User;
 import com.iago.carolinaVca.domain.enums.UserRoleEnum;
-import com.iago.carolinaVca.domain.repositories.IUserRepository;
+import com.iago.carolinaVca.domain.ports.IUserRepository;
 import com.iago.carolinaVca.domain.vos.Name;
 import com.iago.carolinaVca.presentation.mapper.UserPresentationMapper;
 import com.iago.carolinaVca.presentation.request.CreateUserRequest;
